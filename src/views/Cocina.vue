@@ -3,95 +3,107 @@
   <div class="container">
 
       <main>
+        <br>
+        <h1 class="text-center">{{cocina.toUpperCase()}}</h1>
+        <div class="row">
 
-            <h1 class="text-center">{{cocina.toUpperCase()}}</h1>
-        <div id="Buttons" class="text-center">
-            <button @click="resta(1)" :class="btn2">restar</button>
-            <button @click="suma(1)" :class="btn1">sumar</button>
-            <button @click="add()" :disabled="bloquearBTNADD" :class="btn3">Añadir a Arreglo</button>
-        </div>
+              <div id="Buttons" class="text-center col-12">
+                  <b>
+                    <button @click="resta(1)" :class="btn2">restar</button>
+                    <button @click="add()" :disabled="bloquearBTNADD" :class="btn3">Añadir a Arreglo</button>
+                    <button @click="suma(1)" :class="btn1">sumar</button>
+                  </b> 
+              </div>
         <br>
         <h1 :class="classcomputer"> {{ inicia }}  </h1>
+           
 
-
-            
-
-            <h3 class="text-center">Separador--------------------------- Añadir a favoritos</h3>
-
+  <hr>
+            <h5>favoritos ❤</h5>
             {{ arrayfavoritos }}
-
-            <ul>
-                <li v-for="(num, index) in arrayfavoritos" :key="index">
-
-                    {{ num }}
-
-                </li>
-
-            </ul>
-
-            <h3 class="text-center">Separador--------------------------- Añadir a favoritos</h3>
-
-
-
-          
-
+                  <ul>
+                        <li v-for="(num, index) in arrayfavoritos" :key="index" class="list-group">
+                          <!-- rudimentario -->
+                          <!-- <h1 :class="num == 0 ? 'cero' : num > 0 ? 'positivo' : 'negativo'">{{ num }}</h1>  -->
+                          <!-- funcion -->
+                          <h1 :class="classnum(num)">{{ num }}</h1> 
+                        </li>
+                  </ul>
+            <div class="col-12">
             <!-- <h1 :class="inicia > 0 ? 'positivo' : 'negativo'"> {{ inicia }}  </h1> -->
-            <h1 class="text-center"> {{activo ? "estoy activo" : "estoy Inactivo"}}</h1>
-            <h3 class="text-center">Separador--------------------------------------- For Comun</h3>
-            <ul>
-              <li v-for="(fruta, index) in arrayfrutasimple" :key="index">
+            <h2 class="text-center"> {{activo ? "estoy activo" : "estoy Inactivo"}}</h2>
+          
+            </div>
+            <br>
+            <div class="col-4 ">
+                <div class="card">
+                    
+                    <h3>For Comun</h3>
+                        <ul>
+                            <li v-for="(fruta, index) in arrayfrutasimple" :key="index">
+                            {{index }} - {{ fruta }}
+                            </li>
+                        </ul>
+                </div>
+  
+            </div>
+   
+            <div class="col-4 ">
 
-              {{index }} - {{ fruta }}
+              <div class="card">
+               
+                  <h3>For Objeto</h3>
+                    <ul>
+                        <li v-for="(value, propiedad, index) in objetofruta" :key="index">
 
-              </li>
-            </ul>
+                        {{  index }}- {{propiedad }} - {{ value}} 
 
-            <h3 class="text-center">Separador--------------------------------------- For Arreglo</h3>
+                        </li>
+                    </ul>
+              </div>
+  
 
-            <ul>
-              <h1 class="text-center">Con Templace </h1>
-                <template v-for="fruta in arrayfruta" :key="fruta.id">
-                  <li v-if="fruta.id > 1">
+            </div>
+            <div class="col-4">
+              <div class="card">
 
-                  {{fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+         
+                  <h3>For Arreglo</h3>
+                      <ul>
+                        <h5>Con Templace :</h5>
+                          <template v-for="fruta in arrayfruta" :key="fruta.id">
+                              <li v-if="fruta.id > 1">
+                              {{fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+                              </li>
+                          </template>
+               
+                          <h5 v-if="activo === true">Con Span : </h5>
+                            <li v-if="activo === true" v-for="fruta in arrayfruta" :key="fruta.id">
+                              <span class="classcomputer">
+                                  {{fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
+                              </span>  
+                            </li> 
+                      </ul>
+              </div>
+  
+            </div>
+  <hr>     
+                  <h3 v-show="activo" class="text-center">Estoy activo v-show</h3>
+  <hr>
+            <h5>Validacion de session</h5>
 
-                  </li>
+                  <p v-if="!activo">
+                    estoy Inactivo validando
+                  </p>
+                  <p v-else-if ="activo === true">
+                    estoy Activo validando
+                  </p>
+                  <p v-else>
+                    estoy Indeciso
+                  </p>
 
-                </template>
-              <hr>
-                <h1 v-if="activo === true" class="text-center">Con Span </h1>
-              <li v-if="activo === true" v-for="fruta in arrayfruta" :key="fruta.id">
-                <span v-if="fruta.id > 1">
-                  {{fruta.name }} - {{ fruta.price }} - {{ fruta.description }}
-                </span>  
-
-                </li> 
-            </ul>
-            <h3 class="text-center">Separador--------------------------------------- For Objeto</h3>
-            <ul>
-              <li v-for="(value, propiedad, index) in objetofruta" :key="index">
-
-              {{  index }}- {{propiedad }} - {{ value}} 
-
-              </li>
-            </ul>
-
-
-            <h3 v-show="activo" class="text-center">Estoy activo v-show</h3>
-
-            <p v-if="!activo">
-              estoy Inactivo validando
-            </p>
-            <p v-else-if ="activo === true">
-              estoy Activo validando
-            </p>
-            <p v-else>
-              estoy Indeciso
-            </p>
-
-
-        </main>
-
+          </div>
+       </main>
   </div>
        
 </template>
@@ -126,6 +138,19 @@ export default {
     }
     
     const arrayfavoritos = ref([])
+    const classnum = (valor)=>{ 
+
+      if(valor === 0){
+        return 'cero '
+      }
+      if(valor > 0){
+        return 'positivo '
+      }
+      if(valor < 0){
+        return 'negativo '
+      }
+
+    }
     const classcomputer = computed(()=>{
 
       if(inicia.value === 0){
@@ -171,9 +196,9 @@ export default {
     description:"morado magico",
     id:4,
   } 
-    const btn3  = "btn2"
-    const btn1 = "btn1"
-    const btn2 = "btn3"
+    const btn3  = "btn btn-outline-warning botones"
+    const btn1 = "btn btn-outline-success botones"
+    const btn2 = "btn btn-outline-danger botones"
     const activo = true
     const cocina = 'cocina'
     const inicia =  ref(0)
@@ -211,6 +236,7 @@ export default {
       activo,
       inicia,
       classcomputer,
+      classnum,
       resta,
       suma,
       add,
@@ -220,51 +246,13 @@ export default {
 </script>
 <style scoped>
 
-.btn3{ 
+.botones{ 
       padding: 4px;
-       text-align: center;
-       color:#ffffff;
-       background-color: rgb(161, 22, 41);
-       align-items: center;
-    }
-    .btn3:hover{
-      padding: 4px;
-      cursor: pointer;
-      background-color:#ffffff;
-      color: #000000;
-      align-items: center;
+      margin: 5px;
       text-align: center;
+      
     }
-    .btn2{ 
-      padding: 4px;
-       text-align: center;
-       color:#ffffff;
-       background-color: rgb(197, 20, 159);
-       align-items: center;
-    }
-    .btn2:hover{
-      padding: 4px;
-      cursor: pointer;
-      background-color:#ffffff;
-      color: #000000;
-      align-items: center;
-      text-align: center;
-    }
-    .btn1{ 
-      padding: 4px;
-       text-align: center;
-       color:#ffffff;
-       background-color: rgb(15, 211, 218);
-       align-items: center;
-    }
-    .btn1:hover{
-      padding: 4px;
-      cursor: pointer;
-      background-color:#ffffff;
-      color: #000000;
-      align-items: center;
-      text-align: center;
-    }
+
     .positivo{
       color: rgb(39, 170, 78);
     }
@@ -273,5 +261,15 @@ export default {
     }
     .cero{
       color:orange;
+    }
+    .card{
+      border: black 2px solid;
+      border-radius: 14px;
+      padding: 5px;
+      align-content: center;
+      height: 100%;
+    }
+    .card h3{
+      text-align: center;
     }
 </style>

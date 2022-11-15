@@ -1,13 +1,26 @@
 <template>
-  <div class="about">
-    <h1 v-if="pep == 'pepe'">This is an about page</h1>
-    <h1 v-else>This is an about no pepe</h1>
-    <ul>
-      <li v-for="(item,i) in array" :key="i">{{item+' '+i}}</li>
-    </ul>
-    <button @click="suma(5)">press</button>
-    {{ pep }}
+  <div class="container">
+        <div class="about">
+            <div class="row">
+                <div class="col-12">
+                  <h1 v-if="pep == 'pepe'">This is an about page</h1>
+                  <h1 v-else>This is an about no pepe</h1>
+                </div>
+                <div class="col-12">
+                    <ul>
+                        <li v-for="(item,i) in array" :key="i">{{item+' '+i}}</li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                  <button @click="suma(5)">press</button>
+                  <br>
+                {{ pep }}
+                </div>
+               
+            </div>           
+      </div>
   </div>
+  
 </template>
 <script>
 import { onMounted, ref } from "vue";
