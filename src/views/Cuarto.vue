@@ -4,15 +4,18 @@
  
     <div class="container">
           <main>
-                <h1>{{cuarto}}</h1>
+                <h1 class="text-center">{{cuarto}}</h1>
                 <br>
-                <div class="paginado text-center">
-                    <b>
-                      <button @click="resta(1)" v-if="pagina-1 > 0" class="btn btn-danger ">Anterior</button>
-                      <button @click="ira(pagina-1)" v-if="pagina-1 > 0" class="btn btn-info" :class="pagina-1 == pgActual ? 'bg-primary text-white' : ''">{{ pagina-1 }}</button>
-                      <button @click="ira(pagina)" class="btn btn-info" :class="pagina == pgActual ? 'bg-primary text-white' : ''">{{ pagina }}</button>
-                      <button @click="ira(pagina+1)" v-if="pagina+1 < movies.total_pages" class="btn btn-info" :class="pagina+1 == pgActual ? 'bg-primary text-white' : ''">{{ pagina+1 }}</button>
-                      <button @click="suma(1)" class="btn btn-success">Siguiente</button>
+                  <div class="text-center">
+                    <b class="btn-group">
+                      <button type="button" @click="primera()" v-if="pagina-1 > 0" class="btn btn-dark " title="Primero"><font-awesome-icon icon="fa-angles-left" /></button>
+                      <button type="button" @click="resta(1)" v-if="pagina-1 > 0" class="btn btn-success " title="Anterior"><font-awesome-icon icon="fa-angle-left" /></button>
+                      <button type="button" @click="ira(pagina-1)" v-if="pagina-1 > 0" class="btn btn-light" :class="pagina-1 == pgActual ? 'bg-primary text-white' : ''">{{ pagina-1 }}</button>
+                      <button type="button" @click="ira(pagina)" class="btn btn-link" :class="pagina == pgActual ? 'bg-secondary text-white' : ''">{{ pagina }} </button>
+                      <button type="button" @click="ira(pagina+1)" v-if="pagina+1 < movies.total_pages" class="btn btn-light" :class="pagina+1 == pgActual ? 'bg-primary text-white' : ''">{{ pagina+1 }}</button>
+                      <button type="button" @click="suma(1)" v-if="pagina+1 < movies.total_pages" class="btn btn-success" title="Siguiente"><font-awesome-icon icon="fa-angle-right" /></button>
+                      <button type="button" @click="ultima(movies.total_pages)" v-if="pagina+1 < movies.total_pages" class="btn btn-dark " title="Último"><font-awesome-icon icon="fa-angles-right" /></button>
+                    
                     </b>
                   </div>
                 <br>
@@ -99,6 +102,16 @@ export default {
     await getMovies()
 
   }
+  const ultima = async (value) => {
+    pagina.value = value
+    pgActual.value = pagina.value
+    await getMovies() 
+  }
+  const primera = async () => {
+    pagina.value = 1
+    pgActual.value = pagina.value
+    await getMovies() 
+  }
   const suma = async (value) => {
 
         pagina.value = pagina.value + value
@@ -155,6 +168,8 @@ export default {
   return {
     resta,
     suma,
+    primera,
+    ultima,
     pagina,
     cuarto,
     movies,
