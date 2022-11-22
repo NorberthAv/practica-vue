@@ -20,7 +20,7 @@
                   </div>
                 <br>
         <div class="row">
-                  <div v-for="movie in movies.results" class="col-12 col-md-6 col-lg-4"> 
+                  <div v-for="movie in movies.results" class="col-12 col-md-6 col-lg-3"> 
                     <div class="card">
                         <div class="card-header">
                           <h2 v-if="movie.adult">+18</h2>
@@ -29,7 +29,7 @@
                             <h5 class="text-center">{{ movie.title }}</h5>
                         </div>
                         <div class="card-body">
-                          <p class="info">{{ movie.overview }}</p>
+                          <!-- <p class="info">{{ movie.overview }}</p> -->
                                 <div id="app" class="footer">
                                       <a href=""
                                           class="btn icon icon-left btn-success"
@@ -204,9 +204,13 @@ p{
 .card{
    padding: 5%;
    width: auto;
-   height: 700px;
+   height: auto;
  
 } 
+.card-header{
+  height: 420px;
+
+}
 .footer{
   padding: auto;
   bottom: 0px;

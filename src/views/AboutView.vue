@@ -12,7 +12,7 @@
                     </ul>
                 </div>
                 <div class="col-12">
-                  <button @click="suma(5)">press</button>
+                  <button @click="suma(1)">press</button>
                   <br>
                 {{ pep }}
                 </div>
