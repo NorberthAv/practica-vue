@@ -4,6 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
+  
   <header>
     <img alt="Vue logo" class="logo mx-auto" src="@/assets/logo.svg" width="125" height="125" />
 
@@ -12,6 +13,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
       <nav class="text-center">
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/sala">Sala</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/cuarto">Cuarto</RouterLink>
         <RouterLink to="/banio">Baño</RouterLink>
@@ -20,6 +22,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
   </header>
   <RouterView />
+ 
 
 </template>
 

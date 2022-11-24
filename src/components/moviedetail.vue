@@ -70,8 +70,9 @@
                                   
                                 <template v-for=" compani in detalle.production_companies">
                                     <div class="col-3">
-                                        <img :src="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+compani.logo_path" class="img-logo col-12" />
-                                   <br><p>{{ compani.name }}&nbsp;</p>
+                                        <img v-if="compani.logo_path" :src="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+compani.logo_path" class="img-logo col-12" />
+                                        <img v-else src="@/assets/img/Company.png" class="img-logo col-12" />
+                                        <br><p>{{ compani.name }}&nbsp;</p>
                                         
                                     </div>
                                     
@@ -108,6 +109,7 @@
   </div>
 </template>
 <script setup>
+
 import { defineProps, ref, onUpdated } from 'vue';
 const props = defineProps(['detalles'])
 const detalle = ref({})
@@ -122,6 +124,8 @@ onUpdated(async () => {
 </script>
 <style scoped>
 .img-logo{
+    margin: auto;
+    padding: auto;
     width: auto;
     height: auto;
 }

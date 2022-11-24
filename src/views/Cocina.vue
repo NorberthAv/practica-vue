@@ -30,11 +30,20 @@
                         </li>
                   </ul>
             <div class="col-12">
+              <h2>Estatus:</h2>
+                <select  @change="cambio($event)" id="activo" class="form-select">
+                  <option value="0" disabled selected>Seleccione un estado ...</option>
+                  <option value="true">Activo</option>
+                  <option value="false">Inactivo</option>
+                </select>
+                <br>
             <!-- <h1 :class="inicia > 0 ? 'positivo' : 'negativo'"> {{ inicia }}  </h1> -->
             <h2 class="text-center"> {{activo ? "estoy activo" : "estoy Inactivo"}}</h2>
           
             </div>
             <br>
+            <hr>
+        
             <div class="col-4 ">
                 <div class="card">
                     
@@ -199,16 +208,24 @@ export default {
     const btn3  = "btn btn-outline-warning botones"
     const btn1 = "btn btn-outline-success botones"
     const btn2 = "btn btn-outline-danger botones"
-    const activo = true
+    const activo = ref(true)
     const cocina = 'cocina'
     const inicia =  ref(0)
- 
+
+    const cambio = (value) => {
+
+      let valor = value.target.value
+   
+      activo.value = valor == 'true' ? true : false;
+    }
+    
 
     const resta = (value) => {
 
       inicia.value = inicia.value - value
  
     }
+
     const suma = (value) => {
 
       inicia.value = inicia.value + value
@@ -240,6 +257,7 @@ export default {
       resta,
       suma,
       add,
+      cambio,
     }
   },
 }
