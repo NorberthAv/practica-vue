@@ -31,6 +31,14 @@ const router2 = [
         // which is lazy-loaded when the route is visited.
         component: () => import('../views/Sala.vue')
       },
+      {
+      path: '/cine',
+        name: 'cine',
+        // route level code-splitting
+        // this generates a separate chunk (About.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import('../views/Cine.vue')
+      },
     ]
   
   export default router2

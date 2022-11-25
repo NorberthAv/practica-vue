@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import 'popper.js/dist/popper.min.js'
+import 'vue3-carousel/dist/carousel.css'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 

@@ -16,6 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/sala">Sala</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/cuarto">Cuarto</RouterLink>
+        <RouterLink to="/cine">Cine</RouterLink>
         <RouterLink to="/banio">Baño</RouterLink>
         <RouterLink to="/cocina">Cocina</RouterLink>
       </nav>
